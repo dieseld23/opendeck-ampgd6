@@ -11,6 +11,7 @@ Requires OpenDeck 2.5.0 or newer
 ## Supported devices
 
 - FIFINE Ampligame D6 (3142:0007)
+- Protocol version: 3 (D6 Rev. 2)
 
 ## Platform support
 
@@ -29,6 +30,7 @@ Requires OpenDeck 2.5.0 or newer
 
 - Layout: 3 rows × 5 columns (15 buttons)
 - Protocol version: 1
+- Protocol version: 3 (D6 Rev. 2)
 
 ## Building
 
