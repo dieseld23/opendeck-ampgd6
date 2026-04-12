@@ -50,6 +50,7 @@ impl Kind {
         match vid {
             FIFINE_VID => match pid {
                 AMPGD6_PID => Some(Kind::AMPGD6),
+                 AMPGD6REV2_PID => Some(Kind::AMPGD6REV2),
                 _ => None,
             },
             _ => None,
