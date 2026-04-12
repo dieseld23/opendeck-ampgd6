@@ -11,8 +11,8 @@ Requires OpenDeck 2.5.0 or newer
 ## Supported devices
 
 - FIFINE Ampligame D6 (3142:0007)
-- Protocol version: 3 (D6 Rev. 2)
-
+- FIFINE Ampligame D6 Rev. 2 (3142:0060)
+  
 ## Platform support
 
 - Linux: Guaranteed, if stuff breaks - I'll probably catch it before public release
