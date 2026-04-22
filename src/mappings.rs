@@ -61,7 +61,7 @@ impl Kind {
     pub fn protocol_version(&self) -> usize {
         match self {
             Self::AMPGD6 => 1, // Back to version 1 - the error might be related to button count or initialization
-            Self::AMPGD6REV2 => 3,
+            Self::AMPGD6REV2 => 2,
         }
     }
 
