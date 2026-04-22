@@ -33,7 +33,7 @@ pub fn get_image_format_for_key(kind: &Kind, _key: u8) -> ImageFormat {
     let size = if kind.protocol_version() == 1 {
         (105, 105)
     } else {
-        (111,109)
+        (112,112)
     };
 
     ImageFormat {
