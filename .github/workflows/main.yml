@@ -2,7 +2,7 @@ name: Build for Raspberry Pi
 
 on:
   push:
-    branches: [main]
+    branches: [fix-icons]
   pull_request:
   workflow_dispatch:
 
