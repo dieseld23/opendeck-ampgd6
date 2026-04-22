@@ -282,15 +282,32 @@ pub async fn handle_set_image(device: &Device, evt: SetImageEvent) -> Result<(),
                 return Ok(()); // Not a fatal error, enough to just log it
             }
 
-            let image = load_from_memory_with_format(body.as_slice(), image::ImageFormat::Jpeg)?;
+             let loaded_image = load_from_memory_with_format(body.as_slice(), image::ImageFormat::Jpeg)?;
 
             let kind = Kind::from_vid_pid(device.vid, device.pid).unwrap(); // Safe to unwrap here, because device is already filtered
+            let image_format = get_image_format_for_key(&kind, position);
+
+            // Get the target dimensions from the image format
+            let (target_width, target_height) = image_format.size;
+
+            // Resize the image to fill the entire button by stretching to fit
+            let resized_image = image::imageops::resize(
+                &loaded_image,
+                target_width as u32,
+                target_height as u32,
+                image::imageops::FilterType::Lanczos3,
+            );
+
+            // Convert to DynamicImage then to RGB to avoid alpha channel issues
+            let rgba_dynamic = image::DynamicImage::ImageRgba8(resized_image);
+            let rgb_image = rgba_dynamic.to_rgb8();
+            let final_image = image::DynamicImage::ImageRgb8(rgb_image);
 
             device
                 .set_button_image(
                     opendeck_to_device(position),
-                    get_image_format_for_key(&kind, position),
-                    image,
+                    image_format,
+                    final_image,
                 )
                 .await?;
             device.flush().await?;
